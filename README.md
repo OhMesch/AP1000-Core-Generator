@@ -29,4 +29,9 @@ An acceptible generated core has three main criteria:
 
 The coreGen.py file is run first. This program generates every possible core in complience with the rules listed in lines 19-23 and runs a preliminary average enrichment screening. Any average enrihment above 2.7785% is discarded. Any Enrichment too far below is also discarded (will not pass power criteria).
 
-This preliminary screening reduces the number of potentional cores to about
+This preliminary screening reduces the number of potentional cores to about 4 million.
+
+These cores are written into a Westinghouse job specific file structure using the read_write file. Imputs using this structure can be passed into Westinghouse's "black box" analysis. This process is extensive and tests the core for a wie variety of specifications and outputs the results as a text file. The shell script was written to take the input files and pass them through Westinghouse's analysis. 
+
+The read function in the read_write file is then used to parse through each output file and record the final EFPD and max FDH. 
+These results are sorted and outputted to a final text file. This file is a complilation of all cores that passed the three critera with the results of each of the major tests.
