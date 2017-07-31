@@ -95,7 +95,7 @@ class ReadWrite():
 		:rtype: void
 		"""
 
-		fileName = ("ANCinput%d.job" % passNumber)
+		fileName = ("coreGenANC%d.job" % passNumber)
 		fuelNames = ['A1__000','B1__000','C1__000','D1__000','F1__148','E112080','F104080','F104148']
 		convertedArr = []
 
