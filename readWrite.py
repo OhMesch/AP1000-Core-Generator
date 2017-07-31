@@ -44,10 +44,10 @@ class ReadWrite():
 			#5 PPM boron marks end of core cycle
 			#Core power is measured at end of cycle
 			elif("ACCUMULATED CYCLE ENERGY IS") in currLine:
-				temp = currArr[4]
+				temp = float(currArr[4])
 			#Also apart of E-COR Table
 			elif('SOLUBLE BORON CONCENTRATION IS') in currLine:
-				if float(currArr[4]) >= 5:
+				if currArr[4] >= 5:
 					EFPD = temp
 
 			#Skips past the clutter at the top of the E-SUM table to core time step #2
@@ -67,14 +67,14 @@ class ReadWrite():
 			#Once reading in the table, there will be no empty cells
 			#FDH information is always stored in the 11th index
 			if atTable:
-				FDH.append(currArr[11])
+				FDH.append(float(currArr[11]))
 
 		#In nuclear engineering, the most conservative answer is the correct answer
 		#The most ideal FDH value is 1.00
 		#FDH will always be above 1
 		#Generated cores are graded on maximium FDH in lifetime for safety
 		coreFDH = max(FDH)
-		return(float(EFPD),float(coreFDH))
+		return(EFPD,coreFDH)
 
 	def write(self,fuelArr,low,high,passNumber):
 		"""
