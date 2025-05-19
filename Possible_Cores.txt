@@ -1,0 +1,3 @@
+Core 0 passes all criteria.
+EFPD = 500
+Max FDH = 1.423
